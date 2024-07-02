@@ -13,6 +13,16 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(currentSceneID);
     }
 
+    public static void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public static void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
     public static void NextLevel()
     {
         // Получаем индекс текущей сцены
