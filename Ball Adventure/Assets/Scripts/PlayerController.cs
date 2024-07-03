@@ -6,7 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    
     [SerializeField] private float speed = 10f;
+    [SerializeField] private GameObject NextLevelMenu;
+    [SerializeField] private GameObject PauseBT;
 
     private Rigidbody rb;
 
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             Spin(vertical, 0f ,horizontal);
         }
+        
     }
 
     private void Spin(float x, float y, float z)
@@ -40,7 +44,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("Finish"))
         {
-            SceneController.NextLevel();
+            Time.timeScale = 0;
+            NextLevelMenu.SetActive(true);
+            PauseBT.SetActive(false);
         }
     }
 }
